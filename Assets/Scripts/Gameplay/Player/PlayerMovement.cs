@@ -10,11 +10,17 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] private float moveSpeed;
 
     private Vector2 _moveDirection;
-    
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (!IsOwner) enabled = false;
+    }
+
     //Input system
     private void Update()
     {
-       HandleMovement();
+        HandleMovement();
     }
 
     private void HandleMovement()

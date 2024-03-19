@@ -6,11 +6,16 @@ using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
 {
-    public bool FakeOner;
-    private void Start()
+    public override void OnNetworkSpawn()
     {
-        FakeOner = true;
-        GamePlayManagers.Instance.ListPlayer.Add(this);
-        Observer.StartCamera?.Invoke();
+        if (IsOwner)
+        {
+            var trans = transform.position;
+            transform.position = new Vector3(trans.x, 0.5f, trans.z);
+            
+            base.OnNetworkSpawn();
+            GamePlayManagers.Instance.ListPlayer.Add(this);
+            Observer.StartCamera?.Invoke();
+        }
     }
 }

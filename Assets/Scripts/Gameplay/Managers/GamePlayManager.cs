@@ -14,7 +14,7 @@ public class GamePlayManagers : MonoBehaviour
     [SerializeField] private List<PlayerController> listPlayer = new List<PlayerController>();
     
     public List<PlayerController> ListPlayer => listPlayer;
-    public PlayerController GetCurrentPlayer => listPlayer.FirstOrDefault(player => player.FakeOner);
+    public PlayerController GetCurrentPlayer => listPlayer.FirstOrDefault(player => player.IsOwner);
 
     private void Awake()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerUI : MonoBehaviour
 {
-    [SerializeField] private PlayerController player;
+    [SerializeField] private GameObject player;
 
     private Vector3 _distanceFromPlayer;
     private Camera MainCamera => Camera.main;
