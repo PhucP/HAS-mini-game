@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController : NetworkBehaviour, IBlackHold
 {
     public override void OnNetworkSpawn()
     {
@@ -17,5 +17,10 @@ public class PlayerController : NetworkBehaviour
             GamePlayManagers.Instance.ListPlayer.Add(this);
             Observer.StartCamera?.Invoke();
         }
+    }
+
+    public void SuckByBlackHold()
+    {
+        // Do something with blackHold
     }
 }
